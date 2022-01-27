@@ -24,7 +24,6 @@ namespace SocialMedia.Services
                 new Like()
                 {
                     AuthorId = _authorId,
-                    IsLiked = model.IsLiked,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
@@ -32,6 +31,26 @@ namespace SocialMedia.Services
             {
                 ctx.Likes.Add(entity);
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<LikeListItem> GetLikes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Likes
+                        .Where(e => e.AuthorId == _authorId)
+                        .Select(
+                                e =>
+                                new LikeListItem
+                                {
+                                    LikeId = e.LikeId,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                                    );
+                return query.ToArray();
             }
         }
     }
