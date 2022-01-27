@@ -95,6 +95,10 @@
     <Compile Include="CommentDetail.cs" />
     <Compile Include="CommentEdit.cs" />
     <Compile Include="CommentListItem.cs" />
+    <Compile Include="LikeCreate.cs" />
+    <Compile Include="LikeDetail.cs" />
+    <Compile Include="LikeEdit.cs" />
+    <Compile Include="LikeListItem.cs" />
     <Compile Include="PostDetail.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="PostEdit.cs" />
