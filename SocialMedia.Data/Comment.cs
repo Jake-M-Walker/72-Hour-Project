@@ -23,7 +23,7 @@ namespace SocialMedia.Data
         public Guid AuthorId { get; set; }
        
         [ForeignKey("Comment")]
-        public int CommentID { get; set; }
+        public int CommentId { get; set; }
         public virtual Comment Comments { get; set; }
     }
 }
