@@ -21,7 +21,6 @@ namespace SocialMedia.Models
         [Display(Name = "Likes")]
         public int LikeId { get; set; }
         public string Like { get; set; }
-
-        //public int PostId { get; set; }
+        public int PostId { get; set; }
     }
 }
