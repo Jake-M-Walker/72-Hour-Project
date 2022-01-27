@@ -53,7 +53,6 @@ namespace SocialMediaWebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
-
         }
 
         public IHttpActionResult Delete(int id)
