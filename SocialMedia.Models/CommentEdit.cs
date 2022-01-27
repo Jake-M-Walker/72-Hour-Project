@@ -10,5 +10,6 @@ namespace SocialMedia.Models
     {
         public int PostId { get; set; }
         public string Text { get; set; }
+        public int CommentId { get; set; }
     }
 }

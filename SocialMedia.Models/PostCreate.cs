@@ -9,6 +9,8 @@ namespace SocialMedia.Models
 {
     public class PostCreate
     {
+        //Github is ticking me off
+
         [Required]
         [MinLength(1, ErrorMessage ="Please enter at least 1 character.")]
         public string Title { get; set; }
