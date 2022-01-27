@@ -21,5 +21,9 @@ namespace SocialMedia.Models
         public int CommentId { get; set; }
         public string Comment { get; set; }
 
+        [Display(Name = "Likes")]
+        public int LikeId { get; set; }
+        public bool IsLiked { get; set; }
+
     }
 }

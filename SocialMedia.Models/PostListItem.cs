@@ -9,6 +9,7 @@ namespace SocialMedia.Models
 {
     public class PostListItem
     {
+        [Key]
         public int PostId { get; set; }
         public string Title { get; set; }
         [Display (Name = "Created")]
