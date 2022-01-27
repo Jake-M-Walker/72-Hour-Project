@@ -27,4 +27,3 @@ namespace SocialMedia.Data
         public virtual Comment Comments { get; set; }
     }
 }
-
