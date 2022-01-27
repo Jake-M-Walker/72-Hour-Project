@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Build.Framework.XamlTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Data
 {
-    public class Post
+    class Comment
     {
-        public int PostId { get; set; }
+        public int CommentId { get; set; }
 
-        public string Title { get; set; }
         public string Text { get; set; }
 
         public int CommentID { get; set; }
@@ -20,14 +20,10 @@ namespace SocialMedia.Data
 
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-       // public virtual Comment List<Comments> { get; set; }
-
-    
-        //public virtual Like List<Likes> { get; set; }
-
         public Guid AuthorId { get; set; }
-
-
-
+       
+        [ForeignKey("Comment")]
+        public int CommentID { get; set; }
+        public virtual Comment Comments { get; set; }
     }
 }
