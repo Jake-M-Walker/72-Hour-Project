@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Models
 {
-    public class PostListItem
+    public class LikeCreate
     {
-        [Key]
-        public int PostId { get; set; }
-        public string Title { get; set; }
-        [Display (Name = "Created")]
+        public bool IsLiked { get; set; }
+        public Guid OwnerId { get; set; }
+
+        [Display(Name ="Created")]
         public DateTimeOffset CreatedUtc { get; set; }
+        public int PostId { get; set; }
     }
 }

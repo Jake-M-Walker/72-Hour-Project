@@ -26,7 +26,10 @@ namespace SocialMedia.Services
                     AuthorId = _authorId,
                     Title = model.Title,
                     Text = model.Text,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    CommentId = model.CommentId,
+                    LikeId = model.LikeId
+                    
 
                 };
             using (var ctx = new ApplicationDbContext())
