@@ -17,7 +17,6 @@ namespace SocialMedia.Models
 
         [Display(Name = "Edited")]
         public DateTimeOffset? ModifiedUtc { get; set; }
-
-        //public int PostId { get; set; }
+        public int PostId { get; set; }
     }
 }
