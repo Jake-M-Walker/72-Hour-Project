@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -30,8 +30,6 @@ namespace SocialMedia.Data
         public virtual  List<Like> Like { get; set; }
 
         public Guid AuthorId { get; set; }
-
-
 
     }
 }
