@@ -12,6 +12,5 @@ namespace SocialMedia.Models
         [Key]
         public int LikeId { get; set; }
         public Guid AuthorId { get; set; }
-        public bool isLiked { get; set; }
     }
 }

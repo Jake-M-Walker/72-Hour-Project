@@ -1,14 +1,9 @@
-﻿using Microsoft.Build.Framework.XamlTypes;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialMedia.Data
 {
-    class Comment
+    public class Comment
     {
         public int CommentId { get; set; }
 
@@ -22,8 +17,8 @@ namespace SocialMedia.Data
 
         public Guid AuthorId { get; set; }
        
-        [ForeignKey("Comment")]
-        public int CommentId { get; set; }
+        [ForeignKey("Post")]
+        public int PostId { get; set; }
         public virtual Comment Comments { get; set; }
     }
 }
