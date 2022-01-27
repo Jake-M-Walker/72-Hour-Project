@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Models
 {
-    class CommentEdit
+    public class CommentEdit
     {
+        public int PostId { get; set; }
+        public string Text { get; set; }
     }
 }
