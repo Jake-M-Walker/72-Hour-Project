@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Services
 {
-    //public class LikeService
-    //{
-       // private readonly Guid _authorId;
+    public class LikeService
+    {
+        private readonly Guid _authorId;
 
-       // public LikeService(Guid authorId)
-       // {
-       //     _authorId = authorId;
-       // }
+        public LikeService(Guid authorId)
+        {
+            _authorId = authorId;
+        }
 
-        //public bool CreateLike(LikeCreate model)
-        //{
-        //    var entity =
-        //        new Like()
-          //      {
-            //        AuthorId = _authorId,
-        //             IsLiked = model.IsLiked,
-              //      CreatedUtc = DateTimeOffset.Now
-        //        };
+        public bool CreateLike(LikeCreate model)
+        {
+            var entity =
+                new Like()
+                {
+                    AuthorId = _authorId,
+                    IsLiked = model.IsLiked,
+                    CreatedUtc = DateTimeOffset.Now
+                };
 
-         //   using (var ctx = new ApplicationDbContext())
-         //   {
-         //       ctx
-         //   }
+            using (var ctx = new ApplicationDbContext())
+            {
+                
+            }
         }
     }
 }
