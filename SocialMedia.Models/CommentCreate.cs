@@ -22,5 +22,6 @@ namespace SocialMedia.Models
         public int LikeId { get; set; }
         public string Like { get; set; }
         public int PostId { get; set; }
+        public object CommentId { get; set; }
     }
 }

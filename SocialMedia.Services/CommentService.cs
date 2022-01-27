@@ -1,5 +1,4 @@
-﻿using SocialMedia.Data;
-using SocialMedia.Models;
+﻿using SocialMedia.Models;
 using SocialMediaWebAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -9,37 +8,37 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Services
 {
-    public class PostService
+    public class CommentService
     {
         private readonly Guid _authorId;
 
-        public PostService(Guid authorId)
+        public CommentService(Guid authorId)
         {
             _authorId = authorId;
         }
 
-        public bool CreatePost(PostCreate model)
+        public bool CreateComment(CommentCreate model)
         {
             var entity =
-                new Post()
+                new Comment()
                 {
                     AuthorId = _authorId,
-                    Title = model.Title,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
-                    CommentId = model.CommentId,
+                    //PostId = model.PostId
+                    //CommentId = model.CommentId,
                     LikeId = model.LikeId
-                    
+
 
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Comment.Add(entity);
+                Data.Comment comment = ctx.Comment.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<PostListItem> GetPosts()
+        public IEnumerable<CommentListItem> GetComments()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -49,25 +48,24 @@ namespace SocialMedia.Services
                     .Where(e => e.AuthorId == _authorId)
                     .Select(
                         e =>
-                        new PostListItem
+                        new CommentListItem
                         {
-                            PostId = e.PostId,
-                            Title = e.Title,
+                            CommentId = e.CommentId,
+                            Text = e.Text,
                             CreatedUtc = e.CreatedUtc,
                         });
                 return query.ToArray();
             }
         }
 
-        public bool UpdatePost(PostEdit model)
+        public bool UpdateComment(CommentEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Comment
-                    .Single(e => e.PostId == model.PostId && e.AuthorId == _authorId);
-                entity.Title = model.Title;
+                    .Single(e => e.CommentId == model.CommentId && e.AuthorId == _authorId);
                 entity.Text = model.Text;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
@@ -76,14 +74,14 @@ namespace SocialMedia.Services
             }
         }
 
-        public bool DeletePost(int postId)
+        public bool DeleteComment(int commentId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Comment
-                    .Single(e => e.PostId == postId && e.AuthorId == _authorId);
+                    .Single(e => e.CommentId == commentId && e.AuthorId == _authorId);
                 ctx.Comment.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
