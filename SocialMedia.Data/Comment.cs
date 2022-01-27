@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocialMedia.Data
 {
-    class Comment
+
+    public class Comment
     {
         public int CommentId { get; set; }
 

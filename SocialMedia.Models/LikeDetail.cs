@@ -10,15 +10,12 @@ namespace SocialMedia.Models
     public class LikeDetail
     {
 
-        public int Id { get; set; }
+        public int LikeId { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public Guid AuthorId { get; set; }
 
-        [Display(Name ="Liked at"]
+        [Display(Name ="Liked at")]
         public DateTimeOffset CreatedUtc { get; set; }
-
-        public bool isLiked { get; set; }
-
         public int PostId { get; set; }
     }
 }

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SocialMedia.Models
 {
     public class PostCreate
     {
-        //Github is ticking me off
-
         [Required]
         [MinLength(1, ErrorMessage ="Please enter at least 1 character.")]
         public string Title { get; set; }
@@ -20,12 +19,9 @@ namespace SocialMedia.Models
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Comments")]
-        public int CommentId { get; set; }
-        public string Comment { get; set; }
+        public virtual List<Comment> Comment { get; set; }
 
         [Display(Name = "Likes")]
-        public int LikeId { get; set; }
-        public bool IsLiked { get; set; }
-
+         public virtual List<Like> Like { get; set; }
     }
 }

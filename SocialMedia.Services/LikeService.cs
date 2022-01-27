@@ -24,13 +24,67 @@ namespace SocialMedia.Services
                 new Like()
                 {
                     AuthorId = _authorId,
-                    IsLiked = model.IsLiked,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                
+                ctx.Likes.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<LikeListItem> GetLikes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Likes
+                        .Where(e => e.AuthorId == _authorId)
+                        .Select(
+                                e =>
+                                new LikeListItem
+                                {
+                                    LikeId = e.LikeId,
+                                    AuthorId = e.AuthorId
+                                }
+                                    );
+                return query.ToArray();
+            }
+        }
+
+        public LikeDetail GetLikeById(int likeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Likes
+                        .Single(e => e.LikeId == likeId && e.AuthorId == _authorId);
+                return
+                    new LikeDetail
+                    {
+                        LikeId = entity.LikeId,
+                        AuthorId = entity.AuthorId,
+                        PostId = entity.PostId,
+                        CreatedUtc = entity.CreatedUtc
+                    };
+            }
+        }
+
+        public bool RemoveLike(int likeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Likes
+                        .Single(e => e.LikeId == likeId && e.AuthorId == _authorId);
+
+                ctx.Likes.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
