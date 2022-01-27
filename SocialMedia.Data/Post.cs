@@ -18,12 +18,11 @@ namespace SocialMedia.Data
 
         public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset ? ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public virtual Comment List<Comments> { get; set; }
+        //public virtual Comment List<Comments> { get; set; }
 
-        public int LikeId { get; set; }
-        public virtual Like List<Likes> { get; set; }
+        //public virtual Like List<Likes> { get; set; }
 
         public Guid AuthorId { get; set; }
 
