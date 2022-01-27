@@ -35,7 +35,7 @@ namespace SocialMediaWebAPI.Models
         }
 
         public DbSet<Post> Posts { get; set; }
-
+        public DbSet<Like> Likes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

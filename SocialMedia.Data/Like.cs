@@ -16,7 +16,6 @@ namespace SocialMedia.Data
         public Guid AuthorId { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
-        public bool IsLiked { get; set; }
 
         [ForeignKey(nameof(Post))]
         public int PostId { get; set; }

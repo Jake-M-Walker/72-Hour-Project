@@ -30,7 +30,8 @@ namespace SocialMedia.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                
+                ctx.Likes.Add(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }
