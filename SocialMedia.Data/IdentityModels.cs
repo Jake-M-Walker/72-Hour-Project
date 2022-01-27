@@ -34,7 +34,7 @@ namespace SocialMediaWebAPI.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Post> Comment { get; set; }
+        public DbSet<Post> Comments { get; set; }
 
        // public DbSet<Comment> Comments { get; set; }
 

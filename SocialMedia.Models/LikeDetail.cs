@@ -14,7 +14,7 @@ namespace SocialMedia.Models
 
         public Guid OwnerId { get; set; }
 
-        [Display(Name ="Liked at"]
+        [Display(Name ="Liked at")]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public bool isLiked { get; set; }
