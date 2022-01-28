@@ -23,14 +23,14 @@ namespace SocialMediaWebAPI.Controllers
             }
 
 
-            public IHttpActionResult Comment(CommentCreate post)
+            public IHttpActionResult Post(CommentCreate comment)
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
                 var service = CreateCommentService();
 
-                if (!service.CreateComment(Comment))
+                if (!service.CreateComment(comment))
                     return InternalServerError();
 
                 return Ok();

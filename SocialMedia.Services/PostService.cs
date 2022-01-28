@@ -31,7 +31,7 @@ namespace SocialMedia.Services
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Comment.Add(entity);
+                ctx.Comments.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -42,7 +42,7 @@ namespace SocialMedia.Services
             {
                 var query =
                     ctx
-                    .Comment
+                    .Comments
                     .Where(e => e.AuthorId == _authorId)
                     .Select(
                         e =>
@@ -62,7 +62,7 @@ namespace SocialMedia.Services
             {
                 var entity =
                     ctx
-                    .Comment
+                    .Comments
                     .Single(e => e.PostId == model.PostId && e.AuthorId == _authorId);
                 entity.Title = model.Title;
                 entity.Text = model.Text;
@@ -79,9 +79,9 @@ namespace SocialMedia.Services
             {
                 var entity =
                     ctx
-                    .Comment
+                    .Comments
                     .Single(e => e.PostId == postId && e.AuthorId == _authorId);
-                ctx.Comment.Remove(entity);
+                ctx.Comments.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

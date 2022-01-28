@@ -25,15 +25,13 @@ namespace SocialMedia.Services
                     AuthorId = _authorId,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
-                    //PostId = model.PostId
-                    //CommentId = model.CommentId,
                     LikeId = model.LikeId
 
 
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                Data.Comment comment = ctx.Comment.Add(entity);
+                ctx.Comments.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -44,7 +42,7 @@ namespace SocialMedia.Services
             {
                 var query =
                     ctx
-                    .Comment
+                    .Comments
                     .Where(e => e.AuthorId == _authorId)
                     .Select(
                         e =>
@@ -64,7 +62,7 @@ namespace SocialMedia.Services
             {
                 var entity =
                     ctx
-                    .Comment
+                    .Comments
                     .Single(e => e.CommentId == model.CommentId && e.AuthorId == _authorId);
                 entity.Text = model.Text;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
@@ -80,9 +78,9 @@ namespace SocialMedia.Services
             {
                 var entity =
                     ctx
-                    .Comment
+                    .Comments
                     .Single(e => e.CommentId == commentId && e.AuthorId == _authorId);
-                ctx.Comment.Remove(entity);
+                ctx.Comments.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

@@ -15,5 +15,7 @@ namespace SocialMedia.Models
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
         public Guid AuthorId { get; set; }
+
+        public int PostId { get; set; }
     }
 }
